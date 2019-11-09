@@ -1,32 +1,25 @@
-package gui;
+package sharkwrite.gui;
 
-import java.awt.BorderLayout;
-import java.io.File;
+import javax.swing.JFileChooser;
+import java.io.FileReader;
+import java.io.FileWriter;import java.io.File;import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import javax.swing.JOptionPane;
-import javax.swing.JFrame;
+
+import javax.swing.JFrame;import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JList;
-import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
+import javax.swing.JTextPane;
+import javax.swing.JButton;import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JFileChooser;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 public class Sharkwrite extends JFrame {
-    
-	private String indexie;
+
 	private JPanel contentPane;
+	private String indexie;
 	private File selFile;
 	private String path;
 	private boolean tryitrel=false;
@@ -50,67 +43,40 @@ public class Sharkwrite extends JFrame {
 	 * Create the frame.
 	 */
 	public Sharkwrite() {
-		setTitle("Sharkwrite");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 317);
+		setBounds(100, 100, 450, 300);
+		setTitle("Sharkwrite");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow]", "[][20][grow]"));
+		contentPane.setLayout(new MigLayout("", "[grow]", "[20][grow]"));
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel, "cell 0 0 1 2,grow");
-		panel.setLayout(new MigLayout("", "[grow][grow][60]", "[grow]"));
+		contentPane.add(panel, "cell 0 0,grow");
+		panel.setLayout(new MigLayout("", "[grow][grow][20]", "[grow]"));
 		
-		JButton btnSave = new JButton("Save");
-		panel.add(btnSave, "cell 0 0,grow");
+		JButton btnsave = new JButton("Save");
 		
-		JButton btnOpen = new JButton("Open");
+		panel.add(btnsave, "cell 0 0,grow");
 		
-		panel.add(btnOpen, "cell 1 0,grow");
+		JButton btnopen = new JButton("Open");
+		
+		panel.add(btnopen, "cell 1 0,grow");
 		
 		JButton btnLicense = new JButton("LICENSE");
 		btnLicense.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				JOptionPane.showMessageDialog(null, "GOTO https://tinyurl.com/SharkLicense to see the License");
 			}
 		});
 		panel.add(btnLicense, "cell 2 0,grow");
 		
 		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane, "cell 0 2 1 4,grow");
+		contentPane.add(scrollPane, "cell 0 1,grow");
 		
 		JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
-		btnOpen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fc= new JFileChooser();
-				int status=fc.showOpenDialog(null);
-				if(status==JFileChooser.APPROVE_OPTION) {
-					selFile =fc.getSelectedFile();
-                    //textPane
-                    if(selFile.exists()) {
-                    	String filest;
-                    	path=selFile.getPath();
-                    	tryitrel=true;
-                    	indexie="";
-                    	try(BufferedReader in= new BufferedReader(new FileReader(selFile))){
-                    		while((filest=in.readLine())!=null) {
-                    			indexie+=filest+"\n";
-                    		}
-                    		setTitle("Sharkwrite - "+selFile.getName());
-                    		textPane.setText(indexie);
-                    	}catch(IOException ex) {
-                    		ex.printStackTrace();
-                    	}
-                    }else {
-                    	JOptionPane.showMessageDialog(null, "We can't find your file");
-                    }
-				}
-			}
-		});
-		btnSave.addActionListener(new ActionListener() {
+		btnsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				indexie=textPane.getText();
 				if(tryitrel) {
@@ -143,12 +109,41 @@ public class Sharkwrite extends JFrame {
 	    						out.write(indexie);
 	    						out.newLine();
 	    						}catch(IOException ex) {
-	    						ex.printStackTrace();}
+	    						ex.printStackTrace();
+	    						}
 						}
 						setTitle("Sharkwrite - "+selFile.getName());
 					}
 				}
-			}});
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, panel, btnSave, btnOpen, scrollPane}));
+			}
+		});
+		btnopen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc= new JFileChooser();
+				int status=fc.showOpenDialog(null);
+				if(status==JFileChooser.APPROVE_OPTION) {
+					selFile =fc.getSelectedFile();
+                    //textPane
+                    if(selFile.exists()) {
+                    	String filest;
+                    	path=selFile.getPath();
+                    	tryitrel=true;
+                    	indexie="";
+                    	try(BufferedReader in= new BufferedReader(new FileReader(selFile))){
+                    		while((filest=in.readLine())!=null) {
+                    			indexie+=filest+"\n";
+                    		}
+                    		setTitle("Sharkwrite - "+selFile.getName());
+                    		textPane.setText(indexie);
+                    	}catch(IOException ex) {
+                    		ex.printStackTrace();
+                    	}
+                    }else {
+                    	JOptionPane.showMessageDialog(null, "We can't find your file");
+                    }
+				}
+			}
+		});
 	}
+
 }
