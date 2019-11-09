@@ -6,11 +6,9 @@ Used tools: Eclipse, windowBuilder, Apache Ant, Sharkwrite(LICENSE), Sublime Tex
 
 Lightweight TextEditor
 
-(use javaw to start)
-
 ## Download
 
-- [Java version](https://github.com/Sharkbyteprojects/SharkWrite/releases/download/1/Sharkwrite.jar) need java, for all operation systems
+- [Java version](https://github.com/Sharkbyteprojects/SharkWrite/releases/download/2/SharkWrite.jar) need java, for all operation systems
 
 ## Screenshots
 
