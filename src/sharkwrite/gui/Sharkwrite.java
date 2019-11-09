@@ -74,7 +74,7 @@ public class Sharkwrite extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane, "cell 0 1,grow");
 		
-		JTextPane textPane = new JTextPane();
+		final JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 		btnsave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
