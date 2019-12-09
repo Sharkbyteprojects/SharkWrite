@@ -21,10 +21,10 @@ Lightweight TextEditor
 
 ### New Version
 
-- [Windows Setup](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/1/sharkwrite-setup-win-x64.exe)
-- [Windows ZIP](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/1/SharkWrite-win32-x64.zip)
-- [LINUX (Start sharkwrite.run)](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/1/linux-x64.zip)
-- [app.asar (electron)](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/1/app.asar)
+- [Windows Setup](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/2/sharkwrite-setup-win-x64.exe)
+- [Windows ZIP](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/2/SharkWrite-win32-x64.zip)
+- [LINUX (Start sharkwrite.run)](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/2/linux-x64.zip)
+- [app.asar (electron)](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/download/2/app.asar)
 - [GITHUB Release](https://github.com/Sharkbyteprojects/SharkWrite-new/releases/)
 
 ## Screenshots
