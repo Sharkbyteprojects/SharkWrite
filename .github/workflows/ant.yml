@@ -1,8 +1,7 @@
 name: Java CI
 on: [push]
 jobs:
-  build:
-        
+  build: 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -14,6 +13,6 @@ jobs:
       run: ant -noinput -buildfile build.xml
     - uses: actions/upload-artifact@v1.0.0
       with:
-        name: Data
-        path: . 
+        name: packaged-bin
+        path: /home/runner/work/SharkWrite/SharkWrite.jar
   
